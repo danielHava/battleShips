@@ -2,16 +2,14 @@
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
+  "name": "battle-ships-2000",
   "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "description": "A simple Node app built on Express, to play battleships.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.16.4",
-    "http": "^0.0.0"
+    "start": "node server.js",
+    "dev": "npx nodemon",
+    "prettier": "npx prettier \"{src,tests}/**\" --write"
   },
   "engines": {
     "node": "8.x"
@@ -24,5 +22,47 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.16.4",
+    "http": "^0.0.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "jest-chain": "^1.1.2",
+    "jest-extended": "^0.11.2",
+    "lint-staged": "^9.4.2",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "npx prettier --write",
+      "npx eslint --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 120,
+    "endOfLine": "lf"
+  }
 }

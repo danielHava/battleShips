@@ -1,13 +1,9 @@
-// server.js
-// where your node app starts
-
-// init project
 const config = require('./src/config');
 const app = require('./src/app');
 const http = require('http');
 
 const server = http.createServer(app);
-const port = process.env.API_PORT || 8080;
+const port = config.API_PORT;
 
 server.listen(port);
 
